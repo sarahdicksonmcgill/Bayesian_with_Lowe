@@ -43,7 +43,7 @@ peru <- peru_list %>%
          teacher = teacherHIVAIDS_any_binary,
          work = workHIVAIDS_binary) %>% 
   dplyr::select(country, year, age, sex, residenceType, education,
-                family_care, teacher, work)
+                family_care, teacher, work, surveyWgt_ind)
 
 miss_by_survey <- peru %>%
   group_by(country, year) %>%
