@@ -13,7 +13,6 @@ setwd("C:/Users/sarah/OneDrive - McGill University/Bayesian With Lowe/Data")
 #Sammy put your file path to One Drive here
 
 peru_2000 <- readRDS("Peru/PE2000DHS_clean.rds")
-peru_2004 <- readRDS("Peru/PE2004DHS_clean.rds")
 peru_2007 <- readRDS("Peru/PE2007DHS_clean.rds")
 peru_2009 <- readRDS("Peru/PE2009DHS_clean.rds")
 peru_2010 <- readRDS("Peru/PE2010DHS_clean.rds")
@@ -28,7 +27,7 @@ peru_2012 <- readRDS("Peru/PE2012DHS_clean.rds")
 
 keep_vars <- c("surveyID", "age", "sex", "residenceType", "education",
                "careForFamilyHIVAIDS_binary", "teacherHIVAIDS_any_binary",
-               "workHIVAIDS_binary")
+               "workHIVAIDS_binary", "surveyWgt_ind")
 vars2 <- c("family_care", "teacher", "work")
 
 peru_list <- mget(ls(pattern = "^peru_\\d{4}$"))
@@ -52,6 +51,6 @@ miss_by_survey <- peru %>%
             across(all_of(vars2), ~ round(mean(is.na(.x)) * 100, 1)),
             .groups = "drop")
 
-#saveRDS(peru, file = "peru.rds")
+saveRDS(peru, file = "peru.rds")
 
 
